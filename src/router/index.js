@@ -3,10 +3,10 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-/* Layout */
+///: 布局组件
 import Layout from '@/layout'
 
-/* Router Modules */
+///: 一些路由, 会整合到一个ROUTER里面去
 import componentsRouter from './modules/components'
 import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
@@ -393,12 +393,12 @@ const createRouter = () => new Router({
   routes: constantRoutes
 })
 
-const router = createRouter()
+const ROUTER = createRouter()
 
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
 export function resetRouter() {
   const newRouter = createRouter()
-  router.matcher = newRouter.matcher // reset router
+  ROUTER.matcher = newRouter.matcher // reset router
 }
 
-export default router
+export default ROUTER
