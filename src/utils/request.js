@@ -4,14 +4,23 @@ import store from '@/store'
 import { getToken } from '@/utils/auth'
 
 // create an axios instance
-const service = axios.create({
+/**
+ * 创建一个axios实例, 并且初步进行配置
+ *
+ * @type {AxiosInstance}
+ */
+const SERVICE = axios.create({
   baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 5000 // request timeout
 })
 
 // request interceptor
-service.interceptors.request.use(
+/**
+ * 在请求的时候, 进行拦截,加上相应的配置参数
+ *
+ */
+SERVICE.interceptors.request.use(
   config => {
     // do something before request is sent
 
@@ -31,7 +40,10 @@ service.interceptors.request.use(
 )
 
 // response interceptor
-service.interceptors.response.use(
+/**
+ * 在返回的时候,进行拦截,并且进行相应的配置
+ */
+SERVICE.interceptors.response.use(
   /**
    * If you want to get http information such as headers or status
    * Please return  response => response
@@ -82,4 +94,4 @@ service.interceptors.response.use(
   }
 )
 
-export default service
+export default SERVICE
